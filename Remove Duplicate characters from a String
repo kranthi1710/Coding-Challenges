@@ -1,0 +1,24 @@
+//Remove Duplicate characters from a String using Filter
+//We can use filter on Arrays It takes three parameters such as index, element and array itself, 
+//It filters the elements based on condition like if indexOf(element) must match with index, then it returns true
+//Here indexOf() returns the first index of the element SO that if same element is present at different index, then this indexOf will not match with index
+// For Ex, if indexOf('k') is 0, then if another 'k' is present at 8th index, then indexOf('k') returns 0 but duplicate k element as 8 index which doesn't match, then this 'k' is removed/filtered
+
+let str = "Kranthi Kkr Reddy";
+function removeDuplicateChars(uniqStr){
+let strArr=uniqStr.split('').filter((item,index,arr)=>{
+return arr.indexOf(item)==index;
+}).join('');
+return strArr;
+}
+removeDuplicateChars(str);
+
+//Remove Duplicate characters from a String using Set
+let str = "Kranthi Kkr Reddy";
+function removeDuplicateChars(uniqStr){
+let strArr=uniqStr.split('');
+let strSet=new Set(strArr);
+//Above set is returned in Object format(ex:{'k','r'... so on}), so we destructure set into Array and then join them
+return [...strSet].join('');
+}
+console.log(removeDuplicateChars(str));
